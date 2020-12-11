@@ -44,6 +44,15 @@ const NavBarDisplay = ({loggedIn, setLoggedIn}) => {
         });
     }
 
+    const handleLogButton = () => {
+        if (!loggedIn) {
+            return <NavLink style={{cursor:"pointer", paddingRight: "25px"}} onClick = {toggleModal}>Log In</NavLink>
+        }
+        else {
+            return <NavLink style={{cursor:"pointer", paddingRight: "25px"}} onClick = {handleLogOut}>Log Out</NavLink>
+        }
+    }
+
     const handleProfilePage = () => {
         if (loggedIn === true) {
             history.push(`/profile`)
@@ -70,8 +79,7 @@ const NavBarDisplay = ({loggedIn, setLoggedIn}) => {
             </Nav>
             <Nav className="ml-auto " navbar >
                 <NavItem style={{display: "flex"}}>
-                    <NavLink style={{cursor:"pointer", paddingRight: "25px"}} onClick = {toggleModal}>Log In</NavLink>
-                    <NavLink style={{cursor:"pointer", paddingRight: "25px"}} onClick = {handleLogOut}>Log Out</NavLink>
+                    {handleLogButton()}
                 </NavItem>
             </Nav>
         </Navbar>
@@ -84,7 +92,6 @@ const NavBarDisplay = ({loggedIn, setLoggedIn}) => {
         />
     </div>
     );
-
 }
 
 export default NavBarDisplay

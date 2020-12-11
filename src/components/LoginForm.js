@@ -36,8 +36,18 @@ const LoginForm = ({toggleIsLogin, toggle, setLoggedIn, updateLoginUsername}) =>
                 draggable: true,
             });
         })
-        .catch(err=>{
-            console.log(err)
+        .catch(error => {
+            error.response.data.message.forEach((message) => {
+                toast.error(message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            })
         })
     }
 

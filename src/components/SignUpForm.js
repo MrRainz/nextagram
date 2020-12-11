@@ -162,7 +162,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
         .then(response => {
             toggle()
             console.log(response)
-            toast.success(response.data.message, {
+            toast.success("Successfully signed up! Proceed to log in!", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
