@@ -12,9 +12,10 @@ const MyProfilePage = ({loggedIn}) => {
     const [userImages, updateImages] = useState([])
     const [isloading, setIsLoading] = useState(true);
 
-    let jwt = localStorage.getItem("jwt")
+    
 
     useEffect(() => {
+        let jwt = localStorage.getItem("jwt")
         axios({
             method: 'get',
             url: 'https://insta.nextacademy.com/api/v1/users/me',
