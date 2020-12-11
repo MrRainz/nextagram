@@ -37,6 +37,7 @@ const MyProfilePage = ({loggedIn}) => {
     }, [])
 
     useEffect(() => {
+        let jwt = localStorage.getItem("jwt")
         axios({
             method: 'get',
             url: 'https://insta.nextacademy.com/api/v1/images/me',
