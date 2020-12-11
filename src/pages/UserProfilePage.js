@@ -12,7 +12,7 @@ function UserProfilePage({match}) {
         axios.get("https://insta.nextacademy.com/api/v1/users")
         .then((response) => {
             for (const object of response.data) {
-                if (object.id == match.params.id) {
+                if (object.id === match.params.id) {
                     updateUser(object)
                     setIsLoading(false)
                     return object

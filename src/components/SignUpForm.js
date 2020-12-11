@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input, FormFeedback, FormText} from "reactstrap"
+import {ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input, FormFeedback} from "reactstrap"
 import axios from "axios"
 import {toast} from "react-toastify"
 
@@ -129,7 +129,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
         if (!confirmPassword.length){
             return null
         }
-        if (confirmPassword != password){
+        if (confirmPassword !== password){
             return {invalid:true}
         } else {
             return {valid:true}
@@ -140,7 +140,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
         if(!confirmPassword.length){
             return null
         }
-        if(confirmPassword != password){
+        if(confirmPassword !== password){
             return <FormFeedback invalid> Passwords do not match. Please check again.</FormFeedback>
         } else {
             return <FormFeedback valid>Passwords match! You're good to go!</FormFeedback>

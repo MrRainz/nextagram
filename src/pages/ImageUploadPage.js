@@ -26,8 +26,6 @@ const ImageUploadPage = ({loggedIn}) => {
 
     const handleUpload = (e) => {
         e.preventDefault();
-        // Authorization of the user
-        let JWT = localStorage.getItem("JWT");
         // Formdata object to hold the image file to send to the server
         let formData = new FormData();
         // Append the key:value pair to the formData object
@@ -84,6 +82,7 @@ const ImageUploadPage = ({loggedIn}) => {
                             src={previewImage}
                             width="380px"
                             height="380px"
+                            alt=""
                             />
                             ) : (
                             <h3  className="text-center" >
