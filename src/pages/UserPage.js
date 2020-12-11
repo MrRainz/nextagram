@@ -28,7 +28,6 @@ function UserPage() {
     }
 
     let returnProfiles = (user) => {
-        console.log(user)
         return (
             <div className="col-3" style={{display:"flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center"}}>
                 <Card style={{backgroundColor: "lightgray", width: "300px", height: "400px"}}>

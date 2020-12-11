@@ -213,7 +213,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
                     <Input type="password" name="password" id="confirmPassword" placeholder="Key in password again" value={confirmPassword} onChange={handleConfirmPasswordInput} {...getFormPasswordConfirmProp()} />
                     {getFormPasswordConfirmFeedback()}
                 </FormGroup>
-                <p>Already a member? <a href="#" onClick ={(e) =>{
+                <p>Already a member? <a onClick ={(e) =>{
                     e.preventDefault()
                     toggleIsLogin()
                 }}>Log in here</a></p>

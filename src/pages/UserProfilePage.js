@@ -25,7 +25,7 @@ function UserProfilePage({match}) {
                 updateImages(response.data)
             })
         })
-    }, [])
+    }, [match.params.id])
 
 
     if (user !== undefined && userImages !== []) {
