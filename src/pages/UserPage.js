@@ -56,6 +56,9 @@ function UserPage() {
                     else if (search.length >= 1 && user.username.toLowerCase().includes(search.toLowerCase())) {
                         return returnProfiles(user)
                     }
+                    else {
+                        return null
+                    }
                 })}
             </div>
         </>

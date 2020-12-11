@@ -213,10 +213,10 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
                     <Input type="password" name="password" id="confirmPassword" placeholder="Key in password again" value={confirmPassword} onChange={handleConfirmPasswordInput} {...getFormPasswordConfirmProp()} />
                     {getFormPasswordConfirmFeedback()}
                 </FormGroup>
-                <p>Already a member? <a onClick ={(e) =>{
+                <p>Already a member? <span onClick ={(e) =>{
                     e.preventDefault()
                     toggleIsLogin()
-                }}>Log in here</a></p>
+                }}>Log in!</span></p>
             </ModalBody>
             <ModalFooter>
                 <Button color="primary" disabled={!(username && email && password && confirmPassword)} onClick={handleSubmit}>Sign Up</Button>{' '}

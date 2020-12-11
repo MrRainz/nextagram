@@ -24,3 +24,11 @@ code {
 #profileName:hover{
     cursor: default;
 }
+
+span {
+    color: rgb(0, 81, 255);
+}
+
+span:hover{
+    cursor: pointer;
+}

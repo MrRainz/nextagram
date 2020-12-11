@@ -54,10 +54,10 @@ const LoginForm = ({toggleIsLogin, toggle, setLoggedIn, updateLoginUsername}) =>
                 <Label for="password">Password</Label>
                 <Input type="password" name="password" id="password" placeholder="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
             </FormGroup>
-            <p>New member? <a onClick ={(e) =>{
+            <p>New member? <span onClick ={(e) =>{
                 e.preventDefault()
                 toggleIsLogin()
-            }}>Sign up here</a></p>
+            }}>Sign up!</span></p>
         </ModalBody>
         <ModalFooter>
             <Button color="primary" onClick={handleSubmit}>Log In</Button>{' '}
