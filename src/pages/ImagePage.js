@@ -28,7 +28,7 @@ function ImagePage({match, loggedIn}) {
                 }
             }
         })
-    }, [])
+    }, [match.params.userid])
     
     useEffect(()=>{
         if (loggedIn) {
@@ -58,7 +58,7 @@ function ImagePage({match, loggedIn}) {
                 console.log(error)
             })
         }
-    }, [])
+    }, [jwt, loggedIn, match.params.imageid])
 
     useEffect(() => {
         if (userArray.length > 0 && loggedIn) {
@@ -68,8 +68,9 @@ function ImagePage({match, loggedIn}) {
             .then((response)=>{
                 updateCommentNumber(response.data.length)
                 for (let object of response.data) {
-                    let username=""
+                    
                     for (let info of userArray) {
+                        let username=""
                         if (object.posted_by.id === info.id) {
                             username = info.username
                             updateComments((comments) => {
@@ -85,13 +86,14 @@ function ImagePage({match, loggedIn}) {
                 console.log(error)
             })
         }
-    }, [userArray])
+    }, [userArray, match.params.imageid, jwt, loggedIn])
     
     let handleInput = (e) => {
         updateUserComment(e.target.value)
     }
 
-    let handleSubmit = () => {
+    let handleSubmit = (e) => {
+        e.preventDefault()
         updateUserComment("")
         axios.post(`https://insta.nextacademy.com/api/v1/images/${match.params.imageid}/comments`, 
         { "content": userComment },
@@ -175,7 +177,7 @@ function ImagePage({match, loggedIn}) {
                             <div style={{width: '100%'}}>
                                 <Input type="textarea" name="text" placeholder="Type your message here..." style={{boxShadow: 'none', border: 'none'}} onChange={e=>handleInput(e)} value={userComment}></Input>
                             </div>
-                            <Button color="secondary" onClick={(e)=>{e.preventDefault()}} style={{boxShadow: 'none'}} onClick={handleSubmit}>Send</Button>
+                            <Button color="secondary" style={{boxShadow: 'none'}} onClick={e=>{handleSubmit(e)}}>Send</Button>
                         </Form>
                     </div>
                     
