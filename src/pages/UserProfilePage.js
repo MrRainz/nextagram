@@ -1,18 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import LoadingIndicator from '../components/LoadingIndicator'
-import { Card, CardText, CardImg } from 'reactstrap'
+import { Card, CardText, CardImg, Button } from 'reactstrap'
+import {useHistory} from 'react-router-dom'
 
 function UserProfilePage({match}) {
     const [user, updateUser] = useState()
     const [userImages, updateImages] = useState([])
     const [isloading, setIsLoading] = useState(true);
+    const history = useHistory()
 
     useEffect(() => {
         axios.get("https://insta.nextacademy.com/api/v1/users")
         .then((response) => {
-            for (const object of response.data) {
-                if (object.id === match.params.id) {
+            for (let object of response.data) {
+                if (Number(object.id) === Number(match.params.id)) {
                     updateUser(object)
                     setIsLoading(false)
                     return object
@@ -24,6 +26,9 @@ function UserProfilePage({match}) {
             .then((response) => {
                 updateImages(response.data)
             })
+        })
+        .catch((error) => {
+            console.log(error)
         })
     }, [match.params.id])
 
@@ -44,6 +49,7 @@ function UserProfilePage({match}) {
                         return (
                             <Card className = "col-3 justify-content-center" style={{margin: "20px"}}>
                                 <CardImg src={images.url} style={{width: "100%"}}/>
+                                <Button className="btn-secondary" style={{boxShadow: 'none', margin: "5px"}} onClick={()=>{history.push(`/image/${user.id}/${images.id}`)}}>Like/Comment</Button>
                             </Card>
                         )
                     })}

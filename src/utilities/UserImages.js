@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react"
-import { Card, CardImg } from 'reactstrap'
+import { Card, CardImg, Button } from 'reactstrap'
 import axios from 'axios'
 import LoadingIndicator from '../components/LoadingIndicator'
+import {useHistory} from 'react-router-dom'
+
 
 const UserImages = ({userId}) => {
     const [userImages, setUserImages] = useState([]);
     const [isloading, setIsLoading] = useState(true);
-
+    const history = useHistory()
+    
     useEffect(() => {
         //perform a GET request
         axios.get(`https://insta.nextacademy.com/api/v2/images?userId=${userId}`)
@@ -20,7 +23,6 @@ const UserImages = ({userId}) => {
             // If unsuccessful, we notify users what went wrong
             console.log('ERROR: ', error)
         })
-    
     }, [userId])
 
     if(isloading){
@@ -33,6 +35,7 @@ const UserImages = ({userId}) => {
                 return(
                     <Card style={{width: "200px", margin: "5px"}}>
                         <CardImg src={userImage.url} style={{width: "180px", margin: "auto"}} />
+                        <Button className="btn-secondary" style={{boxShadow: 'none', margin: "5px"}} onClick={()=>{history.push(`/image/${userId}/${userImage.id}`)}}>Like/Comment</Button>
                     </Card>
                 )
             })}

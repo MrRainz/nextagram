@@ -44,7 +44,7 @@ function UserPage() {
 
     return (
         <>
-            <div style={{display: "flex", position: "fixed", top: "15px", left: "80vw", zIndex: "1"}}>
+            <div style={{display: "flex", position: "fixed", top: "1.5vh", left: "80vw", zIndex: "1"}}>
                 <input type="text" name="username" value={search} onChange={handleInput} style={{height: '30px', fontSize: '15px'}} placeholder="Search filter..."/>
             </div>
 

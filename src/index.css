@@ -32,3 +32,15 @@ span {
 span:hover{
     cursor: pointer;
 }
+
+.comments {
+    background-color: rgb(190, 189, 189);
+}
+
+.comments:nth-child(even) {
+    background-color: rgb(240, 238, 238);
+}
+
+#commentsbox {
+    overflow: auto;
+}
